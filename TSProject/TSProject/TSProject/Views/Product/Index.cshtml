@@ -1,0 +1,104 @@
+﻿@{ 
+    Layout = null;
+}
+@using TSProject.Data
+@model List<Product>
+<html>
+<head>
+    @Styles.Render("~/login/css")
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 bg-info text-center text-white">
+                <h2>
+                    SẢN PHẨM
+                </h2>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 text-right">
+                        <label>Sản phẩm</label>
+                    </div>
+                    <div class="col-md-5">
+                        <input type="text" class="form-control" placeholder="Nhập sản phẩm" />
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="row">
+                    <div class="col-md-5 text-right">
+                        <label>Danh mục sản phẩm</label>
+                    </div>
+                    <div class="col-md-5">
+                        <select class="form-control">
+                            <option>Cheese tea</option>
+                            <option>Royal cheese</option>
+                            <option>Milk tea</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2 offset-md-5">
+                <button class="btn btn-info">
+                    <i class="fa fa-search"></i>
+                    Tìm kiếm
+                </button>
+            </div>
+        </div>
+        <div class="row mt-3">
+            <div class="col-md-2 offset-md-10">
+                <button class="btn btn-outline-info">
+                    <i class="fa fa-plus"></i>
+                    Thêm mới
+                </button>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <table class="table table-bordered table-hover">
+                <tr class="table-info">
+                    <th>STT</th>
+                    <th>Tên sản phẩm</th>
+                    <th>Ngày tạo</th>
+                    <th>Giá</th>
+                    <th>Tên nhóm</th>
+                    <th></th>
+                    <th></th>
+                </tr>
+                @{
+                    int stt = 0;
+                    foreach (Product p in Model)
+                    {
+                        stt++;
+                        <tr class="table-danger">
+                            <td>@stt</td>
+                            <td>@p.Name</td>
+                            <td>@p.CreateDate</td>
+                            <td>@p.Price</td>
+                            <td>@p.Category.Name</td>
+                            <td class="text-center">
+                                <button class="btn btn-warning">
+                                    <i class="fa fa-edit"></i>
+                                    Sửa
+                                </button>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-danger">
+                                    <i class="fa fa-trash"></i>
+                                    Xóa
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                }
+                
+            </table>
+        </div>
+    </div>
+</body>
+</html>
+
