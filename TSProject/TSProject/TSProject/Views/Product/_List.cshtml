@@ -1,0 +1,44 @@
+﻿@using PagedList
+@using TSProject.Data
+@model IPagedList<Product>
+@using PagedList.Mvc
+<table class="table table-bordered table-hover">
+    <tr class="table-info">
+        <th>STT</th>
+        <th>Tên sản phẩm</th>
+        <th>Ngày tạo</th>
+        <th>Giá</th>
+        <th>Tên nhóm</th>
+        <th></th>
+        <th></th>
+    </tr>
+    @{
+        int stt = 0;
+        foreach (Product p in Model)
+        {
+            stt++;
+            <tr class="table-danger">
+                <td>@stt</td>
+                <td>@p.Name</td>
+                <td>@p.CreateDate</td>
+                <td>@p.Price</td>
+                <td>@p.Category.Name</td>
+                <td class="text-center">
+                    <button class="btn btn-warning">
+                        <i class="fa fa-edit"></i>
+                        Sửa
+                    </button>
+                </td>
+                <td class="text-center">
+                    <button class="btn btn-danger">
+                        <i class="fa fa-trash"></i>
+                        Xóa
+                    </button>
+                </td>
+            </tr>
+        }
+    }
+
+</table>
+Trang @Model.PageNumber/@Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Search", new { page, categoryName = " " }), PagedListRenderOptions.EnableUnobtrusiveAjaxReplacing(new AjaxOptions() { HttpMethod = "POST", UpdateTargetId = "listProduct" }))

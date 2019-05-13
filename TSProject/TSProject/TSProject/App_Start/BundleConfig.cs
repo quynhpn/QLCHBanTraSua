@@ -22,14 +22,24 @@ namespace TSProject
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js",
                       "~/Scripts/respond.js"));
+            bundles.Add(new ScriptBundle("~/content/ajax").Include(
+                      "~/Scripts/Ajax.js",
+                      "~/Scripts/jquery.unobtrusive-ajax.js"));
+            bundles.Add(new ScriptBundle("~/login/jquery").Include(
+                      "~/Scripts/jquery-3.0.0.js"));
+            bundles.Add(new ScriptBundle("~/content/bootstrap").Include(
+                      "~/Scripts/bootstrap.min.js"));
 
             bundles.Add(new StyleBundle("~/login/css").Include(
                       "~/Content/bootstrap.css",
-                      "~/Content/font-awesome.css"));
+                      "~/Content/font-awesome.css",
+                      "~/Content/PagedList.css"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+            bundles.Add(new ScriptBundle("~/content/angular").Include(
+                      "~/Scripts/angular.js"));
         }
     }
 }
